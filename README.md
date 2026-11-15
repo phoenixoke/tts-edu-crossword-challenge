@@ -27,4 +27,4 @@ Buka `index.html` di Chrome atau Edge. Tidak perlu server atau internet. Untuk G
 
 Ilustrasi halaman pembuka dibuat dengan Gemini.
 
-Game Design by prooflendi
+Game Design by Dini Christiani, S.S, Guru Bahasa Indonesia SMP Petra 5

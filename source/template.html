@@ -38,8 +38,26 @@ h1,h2,h3{margin:.2em 0;line-height:1.15}
 .topbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
 .topbar h2{flex:1;font-size:clamp(22px,2.4vw,34px);font-weight:900}
 .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;font-weight:800;font-size:13px;background:#EFEAFE;color:var(--indigo)}
-.foot{position:fixed;left:0;right:0;bottom:0;text-align:center;font-size:12px;color:var(--ink2);padding:5px;pointer-events:none;z-index:5;opacity:.85}
-.foot b{color:var(--indigo)}
+.foot{position:fixed;left:0;right:0;bottom:4px;text-align:center;pointer-events:none;z-index:5}
+.credit{position:relative;display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;padding:4px 16px;border-radius:999px;font-size:12px;font-weight:700;color:var(--ink2);
+  background:linear-gradient(#FFFDF7,#FFFDF7) padding-box,linear-gradient(90deg,#FFC93C,#FF6B5B,#7048E8,#0F9D9A,#FFC93C) border-box;background-size:100% 100%,300% 100%;border:2px solid transparent;
+  box-shadow:0 3px 14px rgba(112,72,232,.22);animation:rim 6s linear infinite}
+.credit .by{letter-spacing:.5px}
+.credit{overflow:visible}
+.credit::after{content:"";position:absolute;inset:0;border-radius:999px;pointer-events:none;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.95) 50%,transparent 60%);background-size:250% 100%;background-repeat:no-repeat;mix-blend-mode:soft-light;animation:glint 3.4s ease-in-out infinite}
+@keyframes glint{0%{background-position:160% 0}60%,100%{background-position:-60% 0}}
+.shiny{font-weight:900;font-size:14px;letter-spacing:.3px;background:linear-gradient(110deg,#2A2490 0%,#4B3FD1 30%,#C77700 42%,#F5A800 48%,#B86A00 54%,#4B3FD1 66%,#2A2490 100%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shine 3.4s ease-in-out infinite;filter:drop-shadow(0 0 3px rgba(255,201,60,.45))}
+.shiny.role{font-size:12px;font-weight:800;animation-delay:.5s}
+.credit .sep{width:5px;height:5px;border-radius:50%;background:var(--yellow);box-shadow:0 0 6px var(--yellow)}
+.spark{position:absolute;width:14px;height:14px;color:#FFC93C;filter:drop-shadow(0 0 4px #FFE38A) drop-shadow(0 0 8px #fff);opacity:0;animation:clink 3.4s ease-in-out infinite}
+.spark svg{width:100%;height:100%;display:block}
+.spark.s1{top:-7px;left:14%;animation-delay:.9s}
+.spark.s2{bottom:-6px;left:48%;width:10px;height:10px;animation-delay:1.6s}
+.spark.s3{top:-6px;right:9%;width:12px;height:12px;animation-delay:2.3s}
+@keyframes shine{0%{background-position:130% 0}60%,100%{background-position:-130% 0}}
+@keyframes clink{0%,100%{opacity:0;transform:scale(.2) rotate(0)}12%{opacity:1;transform:scale(1.25) rotate(45deg)}24%{opacity:0;transform:scale(.3) rotate(90deg)}}
+@keyframes rim{to{background-position:0 0,300% 0}}
+@media (prefers-reduced-motion:reduce){.shiny,.spark,.credit,.credit::after{animation:none}.spark{opacity:.9}}
 
 /* HOME */
 #home{align-items:center;justify-content:center;background:radial-gradient(circle at 20% 10%,#FFF1CC 0,transparent 40%),radial-gradient(circle at 85% 90%,#DDF6F4 0,transparent 40%),var(--bg)}
@@ -115,7 +133,7 @@ h1,h2,h3{margin:.2em 0;line-height:1.15}
 @keyframes pulse{50%{transform:scale(1.06)}}
 .hud .btn{min-height:46px;padding:8px 12px}
 .who{display:flex;align-items:center;gap:8px;background:#fff;color:var(--ink);border-radius:12px;padding:6px 10px;font-weight:900;min-height:46px;border:0}
-.game-main{flex:1;display:grid;grid-template-columns:1fr minmax(300px,30%);gap:14px;padding:12px 14px 30px;min-height:0}
+.game-main{flex:1;display:grid;grid-template-columns:1fr minmax(300px,30%);gap:14px;padding:12px 14px 42px;min-height:0}
 .board{display:flex;flex-direction:column;gap:10px;min-height:0;min-width:0}
 .clue-bar{background:#fff;border-radius:14px;border:2px solid var(--line);padding:10px 14px;font-weight:800;font-size:clamp(15px,1.4vw,22px);display:flex;gap:10px;align-items:center;min-height:56px;box-shadow:var(--shadow)}
 .clue-bar .tag{background:var(--team);color:#fff;border-radius:10px;padding:4px 10px;font-weight:900;white-space:nowrap}
@@ -373,7 +391,7 @@ table.tb{width:100%;border-collapse:collapse;font-weight:700;font-size:15px}
 </aside>
 
 <div class="toasts" id="toasts"></div>
-<div class="foot">Game Design by <b>prooflendi</b></div>
+<div class="foot"><div class="credit" aria-label="Game Design by Dini Christiani, S.S, Guru Bahasa Indonesia SMP Petra 5"><span class="by">Game Design by</span><span class="shiny">Dini Christiani, S.S</span><span class="sep"></span><span class="shiny role">Guru Bahasa Indonesia SMP Petra 5</span><span class="spark s1"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.8 6.6 5.4 11.2 12 12-6.6.8-11.2 5.4-12 12-.8-6.6-5.4-11.2-12-12C6.6 11.2 11.2 6.6 12 0z"/></svg></span><span class="spark s2"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.8 6.6 5.4 11.2 12 12-6.6.8-11.2 5.4-12 12-.8-6.6-5.4-11.2-12-12C6.6 11.2 11.2 6.6 12 0z"/></svg></span><span class="spark s3"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.8 6.6 5.4 11.2 12 12-6.6.8-11.2 5.4-12 12-.8-6.6-5.4-11.2-12-12C6.6 11.2 11.2 6.6 12 0z"/></svg></span></div></div>
 
 <script>
 "use strict";
